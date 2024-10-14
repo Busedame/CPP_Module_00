@@ -1,0 +1,67 @@
+#include "PhoneBook_class.hpp"
+
+PhoneBook::PhoneBook() : NoContact(0), TotContacts(0){}
+PhoneBook::~PhoneBook(){}
+
+void	PhoneBook::Add_Contact_To_PhoneBook(void)
+{
+	if (TotContacts == 8)
+	{
+		if (NoContact == 8)
+			NoContact = 0;
+		Contacts[NoContact].Add_New_Contact();
+		NoContact++;
+	}
+	else
+	{
+		Contacts[NoContact].Add_New_Contact();
+		NoContact++;
+		TotContacts++;
+		if (TotContacts == 8)
+			NoContact = 0;
+	}
+}
+
+void	PhoneBook::Display_Contact_Header(void)
+{
+	std::cout << "|" << std::setw(10) << "Index" << "|" << std::setw(10) << \
+	"First Name" << "|" << std::setw(10) << "Last Name" << "|" << std::setw(10) \
+	<< "Nickname" << "|" << std::endl;
+}
+
+int	PhoneBook::Prompt_For_One_Contact(void)
+{
+	int	InputIndex;
+
+	std::cout << std::endl; std::cout << "Want to know more about each contact?" << std::endl;
+	std::cout << "Enter the index of the contact you want to see. Index must be between 0 and 7." << std::endl;
+	std::cout << "Index: "; std::cin >> InputIndex;
+	if ((InputIndex < 0 || InputIndex > 7) || InputIndex > TotContacts - 1)
+	{
+		while (1)
+		{
+			if (InputIndex < 0 || InputIndex > 7)
+				std::cout << "Index must be between 0 and 7." << std::endl;
+			else
+				std::cout << "Contact doesnt't exist. Please enter another index." << std::endl;
+			std::cout << "Index: "; std::cin >> InputIndex;
+			if (InputIndex >= 0 && InputIndex <= 7 && InputIndex <= TotContacts - 1)
+				break ;
+		}
+	}
+	std::cout << std::endl;
+	return (InputIndex);
+}
+
+void	PhoneBook::Display_Contacts(void)
+{
+	if (TotContacts == 0)
+	{
+		std::cout << "No contacts to display, please add a contact." << std::endl;
+		return ;
+	}
+	Display_Contact_Header();
+	for (int ContactIndex = 0; ContactIndex < TotContacts; ContactIndex++)
+		Contacts[ContactIndex].Display_All_Contacts(ContactIndex);
+	Contacts[Prompt_For_One_Contact()].Display_One_Contact();
+}
