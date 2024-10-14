@@ -1,5 +1,10 @@
 #include "Crappy_Phonebook.hpp"
 
+// Note from 14th of October: Everything is working pretty well,
+// but clean up the code and also watch out for integer overflow.
+// The prompt goes into an infinite loop if an index value of probably
+// higher than max int is being input!!
+
 void	init_program(void)
 {
 	std::cout << "\033[0;36mWelcome to this crappy phonebook! Please enter one out of three commands:\033[0m" << std::endl;
