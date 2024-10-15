@@ -31,23 +31,22 @@ void	PhoneBook::Display_Contact_Header(void)
 
 int	PhoneBook::Prompt_For_One_Contact(void)
 {
-	int	InputIndex;
+	long		InputIndex;
+	std::string	Input;
+	char		*EndPtr;
 
 	std::cout << std::endl; std::cout << "Want to know more about each contact?" << std::endl;
 	std::cout << "Enter the index of the contact you want to see. Index must be between 0 and 7." << std::endl;
-	std::cout << "Index: "; std::cin >> InputIndex;
-	if ((InputIndex < 0 || InputIndex > 7) || InputIndex > TotContacts - 1)
+	while (1)
 	{
-		while (1)
-		{
-			if (InputIndex < 0 || InputIndex > 7)
-				std::cout << "Index must be between 0 and 7." << std::endl;
-			else
-				std::cout << "Contact doesnt't exist. Please enter another index." << std::endl;
-			std::cout << "Index: "; std::cin >> InputIndex;
-			if (InputIndex >= 0 && InputIndex <= 7 && InputIndex <= TotContacts - 1)
-				break ;
-		}
+		std::cout << "Index: "; std::cin >> Input;
+		InputIndex = std::strtol(Input.c_str(), &EndPtr, 10);
+		if (*EndPtr != '\0' || InputIndex < 0 || InputIndex > 7)
+			std::cout << "Index must be numerical, and between 0 and 7." << std::endl;
+		else if (InputIndex > TotContacts - 1)
+			std::cout << "Contact doesnt't exist. Please enter another index." << std::endl;
+		if (*EndPtr == '\0' && InputIndex >= 0 && InputIndex <= 7 && InputIndex <= TotContacts - 1)
+			break ;
 	}
 	std::cout << std::endl;
 	return (InputIndex);

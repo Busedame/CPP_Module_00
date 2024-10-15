@@ -3,7 +3,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 OPTIONS = -c
 SRC =	Contact_class.cpp \
 		PhoneBook_class.cpp \
-		main.cpp
+		Utils.cpp \
+		Main.cpp
 NAME = crappy_phonebook
 OBJ = $(SRC:.cpp=.o)
 
