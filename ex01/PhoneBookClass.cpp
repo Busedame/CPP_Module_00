@@ -1,20 +1,20 @@
-#include "PhoneBook_class.hpp"
+#include "PhoneBookClass.hpp"
 
 PhoneBook::PhoneBook() : NoContact(0), TotContacts(0){}
 PhoneBook::~PhoneBook(){}
 
-void	PhoneBook::Add_Contact_To_PhoneBook(void)
+void	PhoneBook::AddContactToPhoneBook(void)
 {
 	if (TotContacts == 8)
 	{
 		if (NoContact == 8)
 			NoContact = 0;
-		Contacts[NoContact].Add_New_Contact();
+		Contacts[NoContact].AddNewContact();
 		NoContact++;
 	}
 	else
 	{
-		Contacts[NoContact].Add_New_Contact();
+		Contacts[NoContact].AddNewContact();
 		NoContact++;
 		TotContacts++;
 		if (TotContacts == 8)
@@ -22,14 +22,14 @@ void	PhoneBook::Add_Contact_To_PhoneBook(void)
 	}
 }
 
-void	PhoneBook::Display_Contact_Header(void)
+void	PhoneBook::DisplayContactHeader(void)
 {
 	std::cout << "|" << std::setw(10) << "Index" << "|" << std::setw(10) << \
 	"First Name" << "|" << std::setw(10) << "Last Name" << "|" << std::setw(10) \
 	<< "Nickname" << "|" << std::endl;
 }
 
-int	PhoneBook::Prompt_For_One_Contact(void)
+int	PhoneBook::PromptForOneContact(void)
 {
 	long		InputIndex;
 	std::string	Input;
@@ -52,15 +52,15 @@ int	PhoneBook::Prompt_For_One_Contact(void)
 	return (InputIndex);
 }
 
-void	PhoneBook::Display_Contacts(void)
+void	PhoneBook::DisplayContacts(void)
 {
 	if (TotContacts == 0)
 	{
 		std::cout << "No contacts to display, please add a contact." << std::endl;
 		return ;
 	}
-	Display_Contact_Header();
+	DisplayContactHeader();
 	for (int ContactIndex = 0; ContactIndex < TotContacts; ContactIndex++)
-		Contacts[ContactIndex].Display_All_Contacts(ContactIndex);
-	Contacts[Prompt_For_One_Contact()].Display_One_Contact();
+		Contacts[ContactIndex].DisplayAllContacts(ContactIndex);
+	Contacts[PromptForOneContact()].DisplayOneContact();
 }

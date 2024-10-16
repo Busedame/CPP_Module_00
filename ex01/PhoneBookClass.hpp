@@ -5,18 +5,18 @@
 #include <cstring>
 #include <limits>
 #include <cstdlib>
-#include "Contact_class.hpp"
+#include "ContactClass.hpp"
 
 class	PhoneBook
 {
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void	Add_Contact_To_PhoneBook(void);
-		void	Display_Contacts(void);
+		void	AddContactToPhoneBook(void);
+		void	DisplayContacts(void);
 	private:
-		int		Prompt_For_One_Contact(void);
-		void	Display_Contact_Header(void);
+		int		PromptForOneContact(void);
+		void	DisplayContactHeader(void);
 		Contact Contacts[8];
 		int		NoContact;
 		int		TotContacts;

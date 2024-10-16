@@ -1,37 +1,37 @@
-#include "Contact_class.hpp"
+#include "ContactClass.hpp"
 
 Contact::Contact(){}
 Contact::~Contact(){}
 
-void	Contact::Add_New_Contact()
+void	Contact::AddNewContact()
 {
-	Add_Contact_Field("Enter first name: ", FirstName, 1);
-	Add_Contact_Field("Enter last name: ", LastName, 2);
-	Add_Contact_Field("Enter nickname: ", NickName, 3);
-	Add_Contact_Field("Enter phone number: ", PhoneNumber, 4);
-	Add_Contact_Field("Enter darkest secret: ", DarkestSecret, 5);
+	AddContactField("Enter first name: ", FirstName, 1);
+	AddContactField("Enter last name: ", LastName, 2);
+	AddContactField("Enter nickname: ", NickName, 3);
+	AddContactField("Enter phone number: ", PhoneNumber, 4);
+	AddContactField("Enter darkest secret: ", DarkestSecret, 5);
 }
 
-void	Contact::Add_Contact_Field(std::string prompt, std::string &field, int entry)
+void	Contact::AddContactField(std::string prompt, std::string &field, int entry)
 {
 	while (1)
 	{
 		std::cout << prompt; std::getline(std::cin >> std::ws, field);
-		if ((entry == 1 || entry == 2) && !Is_Alphabetical(field))
+		if ((entry == 1 || entry == 2) && !IsAlphabetical(field))
 		{
 			std::cout << "Only alphabetical characters allowed. Try again." << std::endl;
 			continue ;
 		}
-		else if ((entry == 1 || entry == 2) && Is_Alphabetical(field))
+		else if ((entry == 1 || entry == 2) && IsAlphabetical(field))
 			break ;
-		if (entry == 4 && !Is_Numerical(field))
+		if (entry == 4 && !IsNumerical(field))
 			std::cout << "Only numerical characters allowed. Try again." << std::endl;
 		else
 			break ;
 	}
 }
 
-bool	Contact::Is_Alphabetical(std::string Name)
+bool	Contact::IsAlphabetical(std::string Name)
 {
 	for (size_t i = 0; i < Name.length(); i++)
 	{
@@ -40,7 +40,7 @@ bool	Contact::Is_Alphabetical(std::string Name)
 	}
 	return (true);
 }
-bool	Contact::Is_Numerical(std::string PhoneNumber)
+bool	Contact::IsNumerical(std::string PhoneNumber)
 {
 	for (size_t i = 0; i < PhoneNumber.length(); i++)
 	{
@@ -50,7 +50,7 @@ bool	Contact::Is_Numerical(std::string PhoneNumber)
 	return (true);
 }
 
-void	Contact::Display_One_Contact(void)
+void	Contact::DisplayOneContact(void)
 {
 	std::cout << "First name: " << FirstName << std::endl;
 	std::cout << "Last name: " << LastName << std::endl;
@@ -59,7 +59,7 @@ void	Contact::Display_One_Contact(void)
 	std::cout << "Darkest secret: " << DarkestSecret << std::endl;
 }
 
-void	Contact::Display_All_Contacts(int ContactIndex)
+void	Contact::DisplayAllContacts(int ContactIndex)
 {
 	std::cout << "|" << std::setw(10) << ContactIndex << "|";
 	if (FirstName.length() > 10)

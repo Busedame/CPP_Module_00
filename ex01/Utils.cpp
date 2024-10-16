@@ -1,18 +1,18 @@
-#include "Crappy_Phonebook.hpp"
+#include "CrappyPhonebook.hpp"
 
-void	exit_program(void)
+void	ExitProgram(void)
 {
 	std::string	Input;
 
 	while (1)
 	{
-		std::cout << "Are you sure you want to exit? Y/N: "; std::cin >> Input;
-		if ("Y" == convert_input_to_uppercase(Input) || "YES" == convert_input_to_uppercase(Input))
+		std::cout << "Are you sure you want to exit? All contacts will be lost. (Y/N): "; std::cin >> Input;
+		if ("Y" == ConvertInputToUppercase(Input) || "YES" == ConvertInputToUppercase(Input))
 		{ 
 			std::cout << "\033[0;36mExiting... All the contacts are now lost.\033[0m" << std::endl;
 			exit(0);
 		}
-		else if ("N" == convert_input_to_uppercase(Input) || "NO" == convert_input_to_uppercase(Input))
+		else if ("N" == ConvertInputToUppercase(Input) || "NO" == ConvertInputToUppercase(Input))
 		{
 			std::cout << "Exit cancelled." << std::endl;
 			return ;
@@ -22,7 +22,7 @@ void	exit_program(void)
 	}
 }
 
-std::string convert_input_to_uppercase(std::string &Input)
+std::string ConvertInputToUppercase(std::string &Input)
 {
 	std::string UpperCaseInput = Input;
 	for (size_t i = 0; i < UpperCaseInput.length(); i++)
@@ -31,7 +31,7 @@ std::string convert_input_to_uppercase(std::string &Input)
 }
 
 
-void	init_program(void)
+void	InitProgram(void)
 {
 	std::cout << "\033[0;36mWelcome to this crappy phonebook! Please enter one out of three commands:\033[0m" << std::endl;
 	std::cout << "➕ 'ADD' to add a new contact." << std::endl;

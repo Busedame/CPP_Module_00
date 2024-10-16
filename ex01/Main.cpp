@@ -1,22 +1,21 @@
-#include "Crappy_Phonebook.hpp"
+#include "CrappyPhonebook.hpp"
 
 int	main(void)
 {
 	std::string Input;
-	PhoneBook phonebook;
-	Contact	contact;
+	PhoneBook PB;
 
-	init_program();
+	InitProgram();
 	while (1)
 	{
 		std::cout << "\033[0;33mType your command here: \033[0m"; std::cin >> Input;
-		if ("ADD" == convert_input_to_uppercase(Input))
-			phonebook.Add_Contact_To_PhoneBook();
-		else if ("SEARCH" == convert_input_to_uppercase(Input))
-			phonebook.Display_Contacts();
-		else if ("EXIT" == convert_input_to_uppercase(Input))
-			exit_program();
+		if ("ADD" == ConvertInputToUppercase(Input))
+			PB.AddContactToPhoneBook();
+		else if ("SEARCH" == ConvertInputToUppercase(Input))
+			PB.DisplayContacts();
+		else if ("EXIT" == ConvertInputToUppercase(Input))
+			ExitProgram();
 		else
-			std::cout << "\033[0;31mWrong command. Use 'ADD', 'SEARCH' or 'EXIT'.\033[0m" << std::endl;
+			std::cout << "\033[0;31mInvalid command. Use 'ADD', 'SEARCH' or 'EXIT'.\033[0m" << std::endl;
 	}
 }
