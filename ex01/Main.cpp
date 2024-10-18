@@ -8,7 +8,7 @@ int	main(void)
 	InitProgram();
 	while (1)
 	{
-		std::cout << "\033[0;33mType your command here: \033[0m"; std::cin >> Input;
+		std::cout << "\033[0;33mType your command here: \033[0m"; std::getline(std::cin, Input);
 		if ("ADD" == ConvertInputToUppercase(Input))
 			PB.AddContactToPhoneBook();
 		else if ("SEARCH" == ConvertInputToUppercase(Input))
